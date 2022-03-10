@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Pacifico', cursive;
+  background-color: #ffe186;
+}
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+  font-weight: lighter;
+}
+
+.grid {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: #34495e;
+  color: #fff;
+  border: 6px solid #2c3e50;
+  border-radius: 10px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.box {
+  border: 6px solid #2c3e50;
+  border-radius: 2px;
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.players-container {
+  width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
