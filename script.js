@@ -18,7 +18,7 @@ let winningConditions = [
 ];
 
 let boxIndexValue = new Array(9).fill('');
-console.log(boxIndexValue);
+
 let activePlayer = 'X';
 
 const player1 = 'X';
@@ -36,14 +36,6 @@ const switchingPlayer = function () {
 };
 
 const winnerMessage = () => alert(`${activePlayer} won`);
-
-const checkWhoWon = function () {
-  if (activePlayer == player1) {
-    player1Score++;
-  } else {
-    player2Score++;
-  }
-};
 
 const checkForWinner = function () {
   if (playing) {
@@ -63,7 +55,17 @@ const checkForWinner = function () {
       ) {
         // winner message
         winnerMessage();
-        checkWhoWon();
+
+        if (activePlayer == player1) {
+          player1Score++;
+          playerScore0.textContent = player1Score;
+        }
+
+        if (activePlayer == player2) {
+          player2Score++;
+          playerScore1.textContent = player2Score;
+        }
+
         playing = false;
         break;
       }
@@ -81,16 +83,19 @@ boxes.forEach(box => {
     let target = e.target;
     if (playing) {
       let boxIndex = box.getAttribute('id');
-
+      // If we are done with the game (won or draw) or clicked box is already filled with X or O (is not empty) nothing will happend
       if (!playing || boxIndexValue[boxIndex] != '') {
         return;
       } else {
+        // Add X or O to the array of boxIndexValues with specific boxIndex(id) = ActivePlayer (x or o)
         boxIndexValue[boxIndex] = activePlayer;
+        // Display content of activePlayer to clicked box
         target.innerHTML = activePlayer;
+        // Check for winner
         checkForWinner();
+        // If there is no winner, switch player
         switchingPlayer();
       }
     }
   });
 });
-console.log(player1Score);
