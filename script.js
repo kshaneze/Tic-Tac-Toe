@@ -99,3 +99,33 @@ boxes.forEach(box => {
     }
   });
 });
+
+const restart = document.querySelector('.btn__restart-everything');
+const newGame = document.querySelector('.btn__restart-game');
+
+// Restart the game, but keep scores updated;
+restart.addEventListener('click', function () {
+  boxes.forEach(box => {
+    box.innerHTML = '';
+  });
+  boxIndexValue = new Array(9).fill('');
+  activePlayer = 'X';
+  playing = true;
+});
+
+// Restart the game, and set every score to 0;
+newGame.addEventListener('click', function () {
+  boxes.forEach(box => {
+    box.innerHTML = '';
+  });
+
+  player1Score = 0;
+  player2Score = 0;
+
+  playerScore0.textContent = 0;
+  playerScore1.textContent = 0;
+
+  boxIndexValue = new Array(9).fill('');
+  activePlayer = 'X';
+  playing = true;
+});
